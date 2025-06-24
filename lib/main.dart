@@ -1,5 +1,3 @@
-import 'package:device_preview_plus/device_preview_plus.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'src/app.dart';
@@ -18,11 +16,7 @@ void main() async {
   // Run the app and pass in the SettingsController. The app listens to the
   // SettingsController for changes, then passes it further down to the
   // SettingsView.
-  // TODO: Remove DevicePreview in production just for testing purposes
   runApp(
-    DevicePreview(
-      enabled: !kReleaseMode, // only enabled in debug
-      builder: (context) => MyApp(settingsController: settingsController),
-    ),
+    MyApp(settingsController: settingsController),
   );
 }
