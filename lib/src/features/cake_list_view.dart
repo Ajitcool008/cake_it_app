@@ -160,7 +160,7 @@ class CakeListView extends StatelessWidget {
 
   Widget _buildCakeList(BuildContext context, CakeService cakeService) {
     return RefreshIndicator(
-      onRefresh: cakeService.fetchCakes,
+      onRefresh: cakeService.refreshCakes,
       child: ListView.builder(
         physics: const AlwaysScrollableScrollPhysics(),
         padding: const EdgeInsets.symmetric(vertical: 8),

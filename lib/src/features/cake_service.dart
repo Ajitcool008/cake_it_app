@@ -51,8 +51,8 @@ class CakeService with ChangeNotifier {
         }
 
         final List<Cake> fetchedCakes = decodedResponse
-            .where((item) => item is Map<String, dynamic>)
-            .map((cakeJson) => Cake.fromJson(cakeJson as Map<String, dynamic>))
+            .whereType<Map<String, dynamic>>()
+            .map((cakeJson) => Cake.fromJson(cakeJson))
             .where((cake) => cake.title.isNotEmpty)
             .toList();
 
@@ -79,6 +79,9 @@ class CakeService with ChangeNotifier {
       _setLoading(false);
     }
   }
+
+  /// Refreshes the cake list (alias for fetchCakes with refresh flag)
+  Future<void> refreshCakes() => fetchCakes(isRefresh: true);
 
   // Private methods for state management
   void _setCakes(List<Cake> cakes) {
