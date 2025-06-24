@@ -97,8 +97,146 @@ abstract class AppLocalizations {
   /// The title of the application
   ///
   /// In en, this message translates to:
-  /// **'waracle_flutter_tech_test'**
+  /// **'🎂 CakeIt App 🍰'**
   String get appTitle;
+
+  /// Settings page title
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// Appearance section title in settings
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get appearance;
+
+  /// Theme setting title
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get theme;
+
+  /// Description for theme setting
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your preferred theme mode'**
+  String get themeDescription;
+
+  /// System default theme option
+  ///
+  /// In en, this message translates to:
+  /// **'System Default'**
+  String get systemDefault;
+
+  /// Light theme option
+  ///
+  /// In en, this message translates to:
+  /// **'Light Theme'**
+  String get lightTheme;
+
+  /// Dark theme option
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Theme'**
+  String get darkTheme;
+
+  /// Cake details page title
+  ///
+  /// In en, this message translates to:
+  /// **'Cake Details'**
+  String get cakeDetails;
+
+  /// Loading message for cake list
+  ///
+  /// In en, this message translates to:
+  /// **'Loading delicious cakes...'**
+  String get loadingCakes;
+
+  /// Error page title
+  ///
+  /// In en, this message translates to:
+  /// **'Oops! Something went wrong'**
+  String get errorTitle;
+
+  /// Default error message
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown error occurred'**
+  String get unknownError;
+
+  /// Try again button text
+  ///
+  /// In en, this message translates to:
+  /// **'Try Again'**
+  String get tryAgain;
+
+  /// Empty state message when no cakes are available
+  ///
+  /// In en, this message translates to:
+  /// **'No cakes found'**
+  String get noCakesFound;
+
+  /// Instruction for refreshing cake list
+  ///
+  /// In en, this message translates to:
+  /// **'Pull down to refresh or try again later'**
+  String get pullToRefresh;
+
+  /// Refresh button text
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
+  String get refresh;
+
+  /// 404 page title
+  ///
+  /// In en, this message translates to:
+  /// **'Page Not Found'**
+  String get pageNotFound;
+
+  /// 404 page message with route name
+  ///
+  /// In en, this message translates to:
+  /// **'The requested page \"{routeName}\" could not be found.'**
+  String pageNotFoundMessage(String routeName);
+
+  /// Go home button text
+  ///
+  /// In en, this message translates to:
+  /// **'Go Home'**
+  String get goHome;
+
+  /// Error message when image fails to load
+  ///
+  /// In en, this message translates to:
+  /// **'Image not available'**
+  String get imageNotAvailable;
+
+  /// Loading message for image
+  ///
+  /// In en, this message translates to:
+  /// **'Loading image...'**
+  String get loadingImage;
+
+  /// Message when no image is provided
+  ///
+  /// In en, this message translates to:
+  /// **'No image available'**
+  String get noImageAvailable;
+
+  /// Default cake title when not provided
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown Cake'**
+  String get unknownCake;
+
+  /// Default cake description when not provided
+  ///
+  /// In en, this message translates to:
+  /// **'No description available'**
+  String get noDescriptionAvailable;
 }
 
 class _AppLocalizationsDelegate

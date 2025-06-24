@@ -1,3 +1,4 @@
+import 'package:cake_it_app/src/localization/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 import 'settings_controller.dart';
@@ -17,7 +18,7 @@ class SettingsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text(AppLocalizations.of(context)!.settings),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -25,7 +26,7 @@ class SettingsView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Appearance",
+              AppLocalizations.of(context)!.appearance,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w600,
                     color: Theme.of(context).colorScheme.primary,
@@ -57,7 +58,7 @@ class SettingsView extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'Theme',
+                  AppLocalizations.of(context)!.theme,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
@@ -66,7 +67,7 @@ class SettingsView extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              'Choose your preferred theme mode',
+              AppLocalizations.of(context)!.themeDescription,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Colors.grey[600],
                   ),
@@ -85,14 +86,14 @@ class SettingsView extends StatelessWidget {
                   onChanged: controller.updateThemeMode,
                   isExpanded: true,
                   icon: const Icon(Icons.keyboard_arrow_down),
-                  items: const [
+                  items: [
                     DropdownMenuItem(
                       value: ThemeMode.system,
                       child: Row(
                         children: [
-                          Icon(Icons.settings_suggest, size: 20),
-                          SizedBox(width: 12),
-                          Text('System Default'),
+                          const Icon(Icons.settings_suggest, size: 20),
+                          const SizedBox(width: 12),
+                          Text(AppLocalizations.of(context)!.systemDefault),
                         ],
                       ),
                     ),
@@ -100,9 +101,9 @@ class SettingsView extends StatelessWidget {
                       value: ThemeMode.light,
                       child: Row(
                         children: [
-                          Icon(Icons.light_mode, size: 20),
-                          SizedBox(width: 12),
-                          Text('Light Theme'),
+                          const Icon(Icons.light_mode, size: 20),
+                          const SizedBox(width: 12),
+                          Text(AppLocalizations.of(context)!.lightTheme),
                         ],
                       ),
                     ),
@@ -110,9 +111,9 @@ class SettingsView extends StatelessWidget {
                       value: ThemeMode.dark, // Fixed: was ThemeMode.light
                       child: Row(
                         children: [
-                          Icon(Icons.dark_mode, size: 20),
-                          SizedBox(width: 12),
-                          Text('Dark Theme'),
+                          const Icon(Icons.dark_mode, size: 20),
+                          const SizedBox(width: 12),
+                          Text(AppLocalizations.of(context)!.darkTheme),
                         ],
                       ),
                     ),

@@ -1,4 +1,5 @@
 import 'package:cake_it_app/src/features/cake.dart';
+import 'package:cake_it_app/src/localization/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 /// Displays detailed information about a cake.
@@ -14,9 +15,18 @@ class CakeDetailsView extends StatelessWidget {
     final args =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     Cake cake = Cake.fromJson(args);
+
+    // Localize default values if they exist
+    final localizedTitle = cake.title == 'Unknown Cake'
+        ? AppLocalizations.of(context)!.unknownCake
+        : cake.title;
+    final localizedDescription = cake.description == 'No description available'
+        ? AppLocalizations.of(context)!.noDescriptionAvailable
+        : cake.description;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cake Details'),
+        title: Text(AppLocalizations.of(context)!.cakeDetails),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -25,9 +35,9 @@ class CakeDetailsView extends StatelessWidget {
           children: [
             _buildCakeImage(context, cake),
             const SizedBox(height: 16),
-            Text(cake.title, style: Theme.of(context).textTheme.titleLarge),
+            Text(localizedTitle, style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 8),
-            Text(cake.description),
+            Text(localizedDescription),
           ],
         ),
       ),
@@ -63,45 +73,26 @@ class CakeDetailsView extends StatelessWidget {
   }
 
   Widget _buildImageError() {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: Colors.grey[300],
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.broken_image,
-            size: 48,
-            color: Colors.grey[600],
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Image not available',
-            style: TextStyle(
-              color: Colors.grey[600],
-              fontSize: 14,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildImageLoading() {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: Colors.grey[200],
-      child: const Center(
+    return Builder(
+      builder: (context) => Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.grey[300],
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircularProgressIndicator(),
-            SizedBox(height: 16),
+            Icon(
+              Icons.broken_image,
+              size: 48,
+              color: Colors.grey[600],
+            ),
+            const SizedBox(height: 8),
             Text(
-              'Loading image...',
-              style: TextStyle(color: Colors.grey),
+              AppLocalizations.of(context)!.imageNotAvailable,
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontSize: 14,
+              ),
             ),
           ],
         ),
@@ -109,28 +100,53 @@ class CakeDetailsView extends StatelessWidget {
     );
   }
 
+  Widget _buildImageLoading() {
+    return Builder(
+      builder: (context) => Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.grey[200],
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const CircularProgressIndicator(),
+              const SizedBox(height: 16),
+              Text(
+                AppLocalizations.of(context)!.loadingImage,
+                style: const TextStyle(color: Colors.grey),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildImagePlaceholder() {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: Colors.grey[300],
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.cake,
-            size: 64,
-            color: Colors.grey[600],
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'No image available',
-            style: TextStyle(
+    return Builder(
+      builder: (context) => Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.grey[300],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.cake,
+              size: 64,
               color: Colors.grey[600],
-              fontSize: 16,
             ),
-          ),
-        ],
+            const SizedBox(height: 8),
+            Text(
+              AppLocalizations.of(context)!.noImageAvailable,
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontSize: 16,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

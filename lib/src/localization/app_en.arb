@@ -1,6 +1,104 @@
 {
-  "appTitle": "waracle_flutter_tech_test",
+  "appTitle": "🎂 CakeIt App 🍰",
   "@appTitle": {
     "description": "The title of the application"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings page title"
+  },
+  "appearance": "Appearance",
+  "@appearance": {
+    "description": "Appearance section title in settings"
+  },
+  "theme": "Theme",
+  "@theme": {
+    "description": "Theme setting title"
+  },
+  "themeDescription": "Choose your preferred theme mode",
+  "@themeDescription": {
+    "description": "Description for theme setting"
+  },
+  "systemDefault": "System Default",
+  "@systemDefault": {
+    "description": "System default theme option"
+  },
+  "lightTheme": "Light Theme",
+  "@lightTheme": {
+    "description": "Light theme option"
+  },
+  "darkTheme": "Dark Theme",
+  "@darkTheme": {
+    "description": "Dark theme option"
+  },
+  "cakeDetails": "Cake Details",
+  "@cakeDetails": {
+    "description": "Cake details page title"
+  },
+  "loadingCakes": "Loading delicious cakes...",
+  "@loadingCakes": {
+    "description": "Loading message for cake list"
+  },
+  "errorTitle": "Oops! Something went wrong",
+  "@errorTitle": {
+    "description": "Error page title"
+  },
+  "unknownError": "Unknown error occurred",
+  "@unknownError": {
+    "description": "Default error message"
+  },
+  "tryAgain": "Try Again",
+  "@tryAgain": {
+    "description": "Try again button text"
+  },
+  "noCakesFound": "No cakes found",
+  "@noCakesFound": {
+    "description": "Empty state message when no cakes are available"
+  },
+  "pullToRefresh": "Pull down to refresh or try again later",
+  "@pullToRefresh": {
+    "description": "Instruction for refreshing cake list"
+  },
+  "refresh": "Refresh",
+  "@refresh": {
+    "description": "Refresh button text"
+  },
+  "pageNotFound": "Page Not Found",
+  "@pageNotFound": {
+    "description": "404 page title"
+  },
+  "pageNotFoundMessage": "The requested page \"{routeName}\" could not be found.",
+  "@pageNotFoundMessage": {
+    "description": "404 page message with route name",
+    "placeholders": {
+      "routeName": {
+        "type": "String",
+        "example": "/unknown"
+      }
+    }
+  },
+  "goHome": "Go Home",
+  "@goHome": {
+    "description": "Go home button text"
+  },
+  "imageNotAvailable": "Image not available",
+  "@imageNotAvailable": {
+    "description": "Error message when image fails to load"
+  },
+  "loadingImage": "Loading image...",
+  "@loadingImage": {
+    "description": "Loading message for image"
+  },
+  "noImageAvailable": "No image available",
+  "@noImageAvailable": {
+    "description": "Message when no image is provided"
+  },
+  "unknownCake": "Unknown Cake",
+  "@unknownCake": {
+    "description": "Default cake title when not provided"
+  },
+  "noDescriptionAvailable": "No description available",
+  "@noDescriptionAvailable": {
+    "description": "Default cake description when not provided"
   }
 }

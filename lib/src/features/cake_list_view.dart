@@ -1,6 +1,7 @@
 import 'package:cake_it_app/src/features/cake.dart';
 import 'package:cake_it_app/src/features/cake_details_view.dart';
 import 'package:cake_it_app/src/features/cake_service.dart';
+import 'package:cake_it_app/src/localization/app_localizations.dart';
 import 'package:cake_it_app/src/settings/settings_view.dart';
 import 'package:flutter/material.dart';
 
@@ -23,15 +24,15 @@ class CakeListView extends StatelessWidget {
 
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return AppBar(
-      title: const Text(
-        '🎂 CakeIt App 🍰',
-        style: TextStyle(fontWeight: FontWeight.w600),
+      title: Text(
+        AppLocalizations.of(context)!.appTitle,
+        style: const TextStyle(fontWeight: FontWeight.w600),
       ),
       elevation: 2,
       actions: [
         IconButton(
           icon: const Icon(Icons.settings),
-          tooltip: 'Settings',
+          tooltip: AppLocalizations.of(context)!.settings,
           onPressed: () => Navigator.restorablePushNamed(
             context,
             SettingsView.routeName,
@@ -69,15 +70,17 @@ class CakeListView extends StatelessWidget {
   }
 
   Widget _buildLoadingState() {
-    return const Center(
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CircularProgressIndicator(),
-          SizedBox(height: 16),
-          Text(
-            'Loading delicious cakes...',
-            style: TextStyle(fontSize: 16, color: Colors.grey),
+          const CircularProgressIndicator(),
+          const SizedBox(height: 16),
+          Builder(
+            builder: (context) => Text(
+              AppLocalizations.of(context)!.loadingCakes,
+              style: const TextStyle(fontSize: 16, color: Colors.grey),
+            ),
           ),
         ],
       ),
@@ -98,13 +101,14 @@ class CakeListView extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              'Oops! Something went wrong',
+              AppLocalizations.of(context)!.errorTitle,
               style: Theme.of(context).textTheme.headlineSmall,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
             Text(
-              cakeService.errorMessage ?? 'Unknown error occurred',
+              cakeService.errorMessage ??
+                  AppLocalizations.of(context)!.unknownError,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Colors.grey[600],
                   ),
@@ -114,7 +118,7 @@ class CakeListView extends StatelessWidget {
             ElevatedButton.icon(
               onPressed: () => cakeService.fetchCakes(),
               icon: const Icon(Icons.refresh),
-              label: const Text('Try Again'),
+              label: Text(AppLocalizations.of(context)!.tryAgain),
             ),
           ],
         ),
@@ -136,12 +140,12 @@ class CakeListView extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              'No cakes found',
+              AppLocalizations.of(context)!.noCakesFound,
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 8),
             Text(
-              'Pull down to refresh or try again later',
+              AppLocalizations.of(context)!.pullToRefresh,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Colors.grey[600],
                   ),
@@ -150,7 +154,7 @@ class CakeListView extends StatelessWidget {
             ElevatedButton.icon(
               onPressed: () => cakeService.fetchCakes(),
               icon: const Icon(Icons.refresh),
-              label: const Text('Refresh'),
+              label: Text(AppLocalizations.of(context)!.refresh),
             ),
           ],
         ),
@@ -174,6 +178,14 @@ class CakeListView extends StatelessWidget {
   }
 
   Widget _buildCakeItem(BuildContext context, Cake cake) {
+    // Localize default values if they exist
+    final localizedTitle = cake.title == 'Unknown Cake'
+        ? AppLocalizations.of(context)!.unknownCake
+        : cake.title;
+    final localizedDescription = cake.description == 'No description available'
+        ? AppLocalizations.of(context)!.noDescriptionAvailable
+        : cake.description;
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: Card(
@@ -183,7 +195,7 @@ class CakeListView extends StatelessWidget {
           contentPadding: const EdgeInsets.all(12),
           leading: _buildCakeImage(cake),
           title: Text(
-            cake.title,
+            localizedTitle,
             style: const TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 16,
@@ -194,7 +206,7 @@ class CakeListView extends StatelessWidget {
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 4),
             child: Text(
-              cake.description,
+              localizedDescription,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(

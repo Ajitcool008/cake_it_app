@@ -13,8 +13,26 @@ class Cake {
   /// Creates a Cake instance from JSON with proper validation
   factory Cake.fromJson(Map<String, dynamic> json) {
     // Validate required fields and provide fallbacks
+    // Note: These default values will be localized when used in UI
     final title = json['title']?.toString() ?? 'Unknown Cake';
     final description = json['desc']?.toString() ?? 'No description available';
+    final image = json['image']?.toString() ?? '';
+
+    return Cake(
+      title: title,
+      description: description,
+      image: image,
+    );
+  }
+
+  /// Creates a Cake instance from JSON with localized fallbacks
+  factory Cake.fromJsonWithLocalization(
+    Map<String, dynamic> json,
+    String unknownCakeText,
+    String noDescriptionText,
+  ) {
+    final title = json['title']?.toString() ?? unknownCakeText;
+    final description = json['desc']?.toString() ?? noDescriptionText;
     final image = json['image']?.toString() ?? '';
 
     return Cake(
