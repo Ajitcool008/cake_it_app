@@ -263,3 +263,5 @@ This version of the CakeIt app reflects clean, scalable, and production-ready Fl
 - Strong performance and testing foundation
 
 The project is easy to maintain, easy to test, and ready for future features or scale.
+
+Time Spend: 3:30 Hr (Including writing notes.md, Test cases)
