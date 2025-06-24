@@ -18,6 +18,7 @@ void main() async {
   // Run the app and pass in the SettingsController. The app listens to the
   // SettingsController for changes, then passes it further down to the
   // SettingsView.
+  // TODO: Remove DevicePreview in production just for testing purposes
   runApp(
     DevicePreview(
       enabled: !kReleaseMode, // only enabled in debug
